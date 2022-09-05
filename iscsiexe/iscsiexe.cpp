@@ -2,6 +2,7 @@
 #include "pch.h"
 #include <windows.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <tchar.h>
 #include "resource.h"
 #pragma pack(1)
@@ -26,6 +27,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
         LoadString(GetModuleHandle(L"iscsiexe.dll"), IDS_CMD101, pCMD, MAX_ENV_SIZE);
         WideCharToMultiByte(CP_ACP, 0, pCMD, wcslen(pCMD), pACMD, MAX_ENV_SIZE, NULL, NULL);
         WinExec(pACMD, SW_SHOW);
+        exit(0);
         break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
